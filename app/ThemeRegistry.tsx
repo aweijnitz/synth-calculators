@@ -24,12 +24,14 @@ export default function ThemeRegistry({ children }: ThemeRegistryProps) {
 
     const previousInsert = cache.insert;
     let inserted: string[] = [];
-    cache.insert = (...args) => {
+    cache.insert = (
+      ...args: Parameters<typeof previousInsert>
+    ) => {
       const [selector, serialized] = args;
       if (cache.inserted[serialized.name] === undefined) {
         inserted.push(serialized.name);
       }
-      return previousInsert(selector, serialized);
+      return previousInsert(...args);
     };
 
     const flush = () => {
