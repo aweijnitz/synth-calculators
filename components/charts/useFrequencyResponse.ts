@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { RcFilterMode } from '../../lib/rc/types';
 
 export const MIN_FREQUENCY_HZ = 0.1;
-export const MAX_FREQUENCY_HZ = 100_000_000;
+export const MAX_FREQUENCY_HZ = 20_000;
 const LOG_BASE_10 = Math.log(10);
 const MIN_MAGNITUDE = 1e-9;
 
@@ -114,4 +114,3 @@ export function useFrequencyResponse({
     };
   }, [decadeSpan, fcHz, mode, pointCount]);
 }
-
