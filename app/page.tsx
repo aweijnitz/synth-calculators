@@ -38,12 +38,12 @@ export default function HomePage() {
           </Button>
           <Button
             component={Link}
-            href="/calculators/sallen-key-lowpass"
+            href="/calculators/voltage-divider"
             variant="outlined"
             size="large"
             sx={{ flex: 1 }}
           >
-            Sallen-Key Low-pass
+            Voltage Divider Calculator
           </Button>
         </Stack>
         <Divider flexItem />
