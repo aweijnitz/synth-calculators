@@ -27,8 +27,14 @@ export default function HomePage() {
           >
             Op-Amp Gain Calculator
           </Button>
-          <Button variant="outlined" size="large" sx={{ flex: 1 }}>
-            TODO: Filter Design Tools
+          <Button
+            component={Link}
+            href="/calculators/rc-filter"
+            variant="outlined"
+            size="large"
+            sx={{ flex: 1 }}
+          >
+            RC Filter Calculator
           </Button>
         </Stack>
         <Divider flexItem />
