@@ -7,7 +7,7 @@ const robotoFlex = Roboto_Flex({ subsets: ['latin'], variable: '--font-roboto-fl
 
 export const metadata: Metadata = {
   title: 'Synth Calculators',
-  description: 'Responsive, mobile-first Next.js foundation styled with Material Design 3.'
+  description: 'Quick access to synthesizer tools and resources.'
 };
 
 export default function RootLayout({
