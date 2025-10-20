@@ -229,6 +229,7 @@ export default function FrequencyResponseChart({
                 dataKey: 'frequency',
                 label: 'Frequency (Hz)',
                 valueFormatter: (value) => formatHertz(value as number),
+                scaleType: 'log',
                 min: xDomain.min,
                 max: xDomain.max,
               },
@@ -263,4 +264,3 @@ export default function FrequencyResponseChart({
     </Card>
   );
 }
-
