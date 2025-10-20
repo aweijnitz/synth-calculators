@@ -36,6 +36,15 @@ export default function HomePage() {
           >
             RC Filter Calculator
           </Button>
+          <Button
+            component={Link}
+            href="/calculators/sallen-key-lowpass"
+            variant="outlined"
+            size="large"
+            sx={{ flex: 1 }}
+          >
+            Sallen-Key Low-pass
+          </Button>
         </Stack>
         <Divider flexItem />
       </Stack>
