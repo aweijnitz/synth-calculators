@@ -4,6 +4,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { Box, Container, Grid, IconButton, Stack, Typography } from '@mui/material';
 import { useColorScheme } from '@mui/material/styles';
+import type { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import * as React from 'react';
 import CalculatorForm, { type CalculatorField, type CalculatorInputs } from '../../../components/opamp/CalculatorForm';
@@ -256,7 +257,7 @@ function computeOutcome(
   };
 }
 
-export default function OpAmpGainPage() {
+function OpAmpGainPageContent() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -329,7 +330,7 @@ export default function OpAmpGainPage() {
     const queryString = params.toString();
     const target = queryString ? `${pathname}?${queryString}` : pathname;
     if (target !== lastUrlRef.current) {
-      router.replace(target, { scroll: false });
+      router.replace(target as Route, { scroll: false });
       lastUrlRef.current = target;
     }
   }, [debouncedInputs, mode, pathname, router]);
@@ -402,5 +403,13 @@ export default function OpAmpGainPage() {
         </Box>
       </Stack>
     </Container>
+  );
+}
+
+export default function OpAmpGainPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <OpAmpGainPageContent />
+    </React.Suspense>
   );
 }
