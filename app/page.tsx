@@ -38,6 +38,15 @@ export default function HomePage() {
           </Button>
           <Button
             component={Link}
+            href="/calculators/sallen-key-lowpass"
+            variant="outlined"
+            size="large"
+            sx={{ flex: 1 }}
+          >
+            Sallen-Key Low-pass
+          </Button>
+          <Button
+            component={Link}
             href="/calculators/voltage-divider"
             variant="outlined"
             size="large"
