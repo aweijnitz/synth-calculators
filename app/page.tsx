@@ -36,6 +36,15 @@ export default function HomePage() {
           >
             RC Filter Calculator
           </Button>
+          <Button
+            component={Link}
+            href="/calculators/voltage-divider"
+            variant="outlined"
+            size="large"
+            sx={{ flex: 1 }}
+          >
+            Voltage Divider Calculator
+          </Button>
         </Stack>
         <Divider flexItem />
       </Stack>
