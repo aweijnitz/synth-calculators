@@ -18,7 +18,8 @@
     "jsx": "preserve",
     "moduleDetection": "force",
     "types": [
-      "node"
+      "node",
+      "jest"
     ],
     "incremental": true,
     "plugins": [

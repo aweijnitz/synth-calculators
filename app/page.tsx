@@ -1,4 +1,5 @@
 import { Box, Button, Container, Divider, Stack, Typography } from '@mui/material';
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
@@ -17,8 +18,14 @@ export default function HomePage() {
         </Box>
 
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems="stretch">
-          <Button variant="contained" size="large" sx={{ flex: 1 }}>
-            @TODO: Op Amp Gain Calculators
+          <Button
+            component={Link}
+            href="/calculators/opamp-gain"
+            variant="contained"
+            size="large"
+            sx={{ flex: 1 }}
+          >
+            Op-Amp Gain Calculator
           </Button>
           <Button variant="outlined" size="large" sx={{ flex: 1 }}>
             TODO: Filter Design Tools
