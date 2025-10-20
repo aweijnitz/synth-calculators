@@ -1,7 +1,7 @@
 'use client';
 
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { Alert, Button, Card, CardContent, Snackbar, Stack, Typography } from '@mui/material';
+import { Alert, Button, Card, CardContent, CardMedia, Snackbar, Stack, Typography } from '@mui/material';
 import * as React from 'react';
 import CopyChip from '../common/CopyChip';
 import type { CalculatorField } from './CalculatorForm';
@@ -40,6 +40,9 @@ export default function ResultsCard({
 }: ResultsCardProps) {
   const [snackbarOpen, setSnackbarOpen] = React.useState(false);
   const [snackbarMessage, setSnackbarMessage] = React.useState(COPY_MESSAGE);
+
+  const diagramSrc = mode === 'inverting' ? '/img/inverting_opamp.svg' : '/img/non-inverting_opamp.svg';
+  const diagramAlt = mode === 'inverting' ? 'Inverting op-amp schematic' : 'Non-inverting op-amp schematic';
 
   const handleCopyAll = React.useCallback(async () => {
     if (typeof navigator === 'undefined' || !navigator.clipboard || gain === undefined) {
@@ -86,6 +89,19 @@ export default function ResultsCard({
 
   return (
     <Card variant="outlined" sx={{ height: '100%' }}>
+      <CardMedia
+        component="img"
+        image={diagramSrc}
+        alt={diagramAlt}
+        sx={{
+          maxHeight: 220,
+          width: '100%',
+          objectFit: 'contain',
+          backgroundColor: 'background.default',
+          borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
+          p: 2,
+        }}
+      />
       <CardContent>
         <Stack spacing={3}>
           <Typography variant="h5" component="h2">
