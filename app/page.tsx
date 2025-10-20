@@ -21,7 +21,7 @@ export default function HomePage() {
           <Button
             component={Link}
             href="/calculators/opamp-gain"
-            variant="contained"
+            variant="outlined"
             size="large"
             sx={{ flex: 1 }}
           >
