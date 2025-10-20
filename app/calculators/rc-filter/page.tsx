@@ -9,6 +9,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import * as React from 'react';
 import FilterForm, { type FilterInputs } from '../../../components/rc/FilterForm';
 import ResultsCard from '../../../components/rc/ResultsCard';
+import FrequencyResponseChart from '../../../components/charts/FrequencyResponseChart';
 import { parseFarads, parseHertz, parseOhms } from '../../../lib/rc/parse';
 import { solveCutoff, type SolveCutoffArgs, type SolveCutoffResult } from '../../../lib/rc/solve';
 import type { RcFilterField, RcFilterMode } from '../../../lib/rc/types';
@@ -373,6 +374,13 @@ function RcFilterCalculatorContent() {
             />
           </Grid>
         </Grid>
+
+        <FrequencyResponseChart
+          mode={mode}
+          rOhms={typeof outcome.resolved.r === 'number' ? outcome.resolved.r : undefined}
+          cFarads={typeof outcome.resolved.c === 'number' ? outcome.resolved.c : undefined}
+          fcHz={typeof outcome.resolved.fc === 'number' ? outcome.resolved.fc : undefined}
+        />
 
         <Box>
           <Typography variant="subtitle2" color="text.secondary" gutterBottom>
