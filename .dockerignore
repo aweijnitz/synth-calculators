@@ -1,0 +1,12 @@
+.next
+node_modules
+npm-debug.log*
+Dockerfile
+.dockerignore
+.git
+.github
+.gitignore
+*.swp
+*.swo
+out
+.vercel
