@@ -7,6 +7,7 @@ import { useColorScheme } from '@mui/material/styles';
 import type { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import * as React from 'react';
+import CalculatorHeader from '../../../components/common/CalculatorHeader';
 import InputsForm, { type PotBiasField, type PotBiasInputs } from '../../../components/potbias/InputsForm';
 import ResultsCard from '../../../components/potbias/ResultsCard';
 import { parseOhms, parseVolts } from '../../../lib/potbias/parse';
@@ -21,8 +22,8 @@ const MAX_RECOMMENDED_RESISTANCE = 100_000_000;
 const DEFAULT_INPUTS: PotBiasInputs = {
   vsHi: '12',
   vsLo: '0',
-  vTop: '8',
-  vBot: '2',
+  vTop: '10',
+  vBot: '3',
   rPot: '10k'
 };
 
@@ -283,7 +284,9 @@ function PotBiasCalculatorContent() {
   const parsedNumbers = parsed.numbers;
 
   return (
-    <Container component="main" maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
+    <>
+      <CalculatorHeader title="Potentiometer Biasing Calculator" />
+      <Container component="main" maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
       <Stack spacing={4}>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Stack spacing={1}>
@@ -340,7 +343,8 @@ function PotBiasCalculatorContent() {
           </Typography>
         </Box>
       </Stack>
-    </Container>
+      </Container>
+    </>
   );
 }
 

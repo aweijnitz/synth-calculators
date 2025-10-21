@@ -72,6 +72,7 @@ export default function InputsForm({
         label={FIELD_LABELS[field]}
         value={value}
         onChange={(event) => onChange(field, event.target.value)}
+        onFocus={(event) => event.target.select()}
         fullWidth
         error={Boolean(error)}
         helperText={helperText(field, error)}

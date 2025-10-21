@@ -76,6 +76,15 @@ export default function ResultsCard({
             </Alert>
           ))}
 
+          <Stack spacing={0.5}>
+            <Typography variant="subtitle2" color="text.secondary">
+              Q-factor (unity gain)
+            </Typography>
+            <Typography variant="h6" component="p">
+              Q = {formatQualityFactor(q)}
+            </Typography>
+          </Stack>
+
           {showSweeps && (
             <Stack spacing={2}>
               <Stack spacing={0.5}>
@@ -87,15 +96,6 @@ export default function ResultsCard({
                 </Typography>
                 <Typography variant="h6" component="p">
                   C2 = {formatFarads(c2 ?? Number.NaN)}
-                </Typography>
-              </Stack>
-
-              <Stack spacing={0.5}>
-                <Typography variant="subtitle2" color="text.secondary">
-                  Q-factor (unity gain)
-                </Typography>
-                <Typography variant="h6" component="p">
-                  Q = {formatQualityFactor(q)}
                 </Typography>
               </Stack>
 

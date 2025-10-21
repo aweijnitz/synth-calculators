@@ -7,6 +7,7 @@ import { useColorScheme } from '@mui/material/styles';
 import type { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import * as React from 'react';
+import CalculatorHeader from '../../../components/common/CalculatorHeader';
 import CalculatorForm, { type CalculatorField, type CalculatorInputs } from '../../../components/opamp/CalculatorForm';
 import ResultsCard from '../../../components/opamp/ResultsCard';
 import { nearestE24Neighbors } from '../../../lib/opamp/e24';
@@ -339,7 +340,9 @@ function OpAmpGainPageContent() {
   const infoMessages = Array.from(outcome.infoMessages);
 
   return (
-    <Container component="main" maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
+    <>
+      <CalculatorHeader title="Op-Amp Gain Calculator" />
+      <Container component="main" maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
       <Stack spacing={4}>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Stack spacing={1}>
@@ -402,7 +405,8 @@ function OpAmpGainPageContent() {
           </Typography>
         </Box>
       </Stack>
-    </Container>
+      </Container>
+    </>
   );
 }
 

@@ -7,6 +7,7 @@ import { useColorScheme } from '@mui/material/styles';
 import type { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import * as React from 'react';
+import CalculatorHeader from '../../../components/common/CalculatorHeader';
 import DividerForm, { type DividerInputs } from '../../../components/vdiv/DividerForm';
 import ResultsCard from '../../../components/vdiv/ResultsCard';
 import { parseOhms, parseVolts } from '../../../lib/vdiv/parse';
@@ -321,7 +322,9 @@ function VoltageDividerCalculatorContent() {
   const infoMessages = React.useMemo(() => Array.from(outcome.infoMessages), [outcome.infoMessages]);
 
   return (
-    <Container component="main" maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
+    <>
+      <CalculatorHeader title="Voltage Divider Calculator" />
+      <Container component="main" maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
       <Stack spacing={4}>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Stack spacing={1}>
@@ -376,7 +379,8 @@ function VoltageDividerCalculatorContent() {
           </Typography>
         </Box>
       </Stack>
-    </Container>
+      </Container>
+    </>
   );
 }
 

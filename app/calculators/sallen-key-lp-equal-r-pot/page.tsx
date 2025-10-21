@@ -9,6 +9,7 @@ import { useColorScheme } from '@mui/material/styles';
 import type { Route } from 'next';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import * as React from 'react';
+import CalculatorHeader from '../../../components/common/CalculatorHeader';
 import SkPotSweep from '../../../components/charts/SkPotSweep';
 import InputsForm, { type Field, type Inputs } from '../../../components/sklp_equal_pot/InputsForm';
 import ResultsCard from '../../../components/sklp_equal_pot/ResultsCard';
@@ -185,7 +186,9 @@ function SallenKeyEqualPotContent() {
   const hasInsufficient = !parsed.values.fTarget50 || !parsed.values.rPotMax;
 
   return (
-    <Container component="main" maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
+    <>
+      <CalculatorHeader title="Sallen-Key LPF · Dual Pot" />
+      <Container component="main" maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
       <Stack spacing={4}>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Box>
@@ -232,7 +235,8 @@ function SallenKeyEqualPotContent() {
           loading={hasInsufficient}
         />
       </Stack>
-    </Container>
+      </Container>
+    </>
   );
 }
 
