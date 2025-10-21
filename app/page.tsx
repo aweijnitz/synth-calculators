@@ -54,6 +54,15 @@ export default function HomePage() {
           >
             Voltage Divider Calculator
           </Button>
+          <Button
+            component={Link}
+            href="/calculators/pot-bias"
+            variant="outlined"
+            size="large"
+            sx={{ flex: 1 }}
+          >
+            Pot Bias Calculator
+          </Button>
         </Stack>
         <Divider flexItem />
       </Stack>
