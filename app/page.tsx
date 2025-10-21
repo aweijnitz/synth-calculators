@@ -52,7 +52,16 @@ export default function HomePage() {
             size="large"
             sx={{ flex: 1 }}
           >
-            Sallen-Key LP (Dual Pot)
+            Sallen-Key LP (Equal R)
+          </Button>
+          <Button
+            component={Link}
+            href="/calculators/sallen-key-lp-equal-r-pot"
+            variant="outlined"
+            size="large"
+            sx={{ flex: 1 }}
+          >
+            Sallen-Key LP (Dual Pot Sweep)
           </Button>
           <Button
             component={Link}
