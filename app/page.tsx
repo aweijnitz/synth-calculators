@@ -17,12 +17,12 @@ export default function HomePage() {
           </Typography>
         </Box>
 
-        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems="stretch">
+        <Stack direction={{ xs: 'column', sm: 'column' }} spacing={2} alignItems="stretch">
           <Button
             component={Link}
             href="/calculators/opamp-gain"
             variant="outlined"
-            size="large"
+            size="medium"
             sx={{ flex: 1 }}
           >
             Op-Amp Gain Calculator
@@ -31,7 +31,7 @@ export default function HomePage() {
             component={Link}
             href="/calculators/rc-filter"
             variant="outlined"
-            size="large"
+            size="medium"
             sx={{ flex: 1 }}
           >
             RC Filter Calculator
@@ -40,34 +40,25 @@ export default function HomePage() {
             component={Link}
             href="/calculators/sallen-key-lowpass"
             variant="outlined"
-            size="large"
+            size="medium"
             sx={{ flex: 1 }}
           >
             Sallen-Key Low-pass
           </Button>
           <Button
             component={Link}
-            href="/calculators/sallen-key-lp-equal-r"
-            variant="outlined"
-            size="large"
-            sx={{ flex: 1 }}
-          >
-            Sallen-Key LP (Equal R)
-          </Button>
-          <Button
-            component={Link}
             href="/calculators/sallen-key-lp-equal-r-pot"
             variant="outlined"
-            size="large"
+            size="medium"
             sx={{ flex: 1 }}
           >
-            Sallen-Key LP (Dual Pot Sweep)
+            Sallen-Key LP (Dual Gang Pot)
           </Button>
           <Button
             component={Link}
             href="/calculators/voltage-divider"
             variant="outlined"
-            size="large"
+            size="medium"
             sx={{ flex: 1 }}
           >
             Voltage Divider Calculator
@@ -76,7 +67,7 @@ export default function HomePage() {
             component={Link}
             href="/calculators/pot-bias"
             variant="outlined"
-            size="large"
+            size="medium"
             sx={{ flex: 1 }}
           >
             Pot Bias Calculator
