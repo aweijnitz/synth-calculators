@@ -10,9 +10,9 @@ jest.mock('next/navigation', () => ({
   usePathname: jest.fn(),
 }));
 
-const chartMock = jest.fn(() => <div data-testid="frequency-response-chart" />);
+const chartMock = jest.fn((props: Record<string, unknown>) => props);
 
-jest.mock('../../components/charts/FrequencyResponseChart', () => (props: any) => {
+jest.mock('../../components/charts/FrequencyResponseChart', () => (props: Record<string, unknown>) => {
   chartMock(props);
   return <div data-testid="frequency-response-chart" />;
 });
@@ -82,10 +82,12 @@ describe('Sallen-Key Low-pass page', () => {
       expect(screen.getByText(/R2 =/)).toBeInTheDocument();
     });
 
-    const lastCall = chartMock.mock.calls.at(-1) as [Record<string, unknown>];
-    expect(lastCall[0]).toMatchObject({ mode: 'lowpass' });
-    expect(lastCall[0].fcHz).toBeGreaterThan(900);
-    expect(lastCall[0].fcHz).toBeLessThan(1_100);
+    const lastCall = chartMock.mock.calls.at(-1);
+    expect(lastCall).toBeDefined();
+    const [chartProps] = lastCall ?? [{} as Record<string, unknown>];
+    expect(chartProps).toMatchObject({ mode: 'lowpass' });
+    expect(chartProps.fcHz as number).toBeGreaterThan(900);
+    expect(chartProps.fcHz as number).toBeLessThan(1_100);
   });
 
   it('hydrates from query params and syncs back to the URL', async () => {
