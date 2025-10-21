@@ -26,6 +26,12 @@ const createSearchParams = (values: Record<string, string> = {}) => {
   } as unknown as URLSearchParams;
 };
 
+const runWithAct = async (operation: () => Promise<void>) => {
+  await act(async () => {
+    await operation();
+  });
+};
+
 describe('VoltageDividerCalculatorPage', () => {
   const routerReplace = jest.fn();
 
@@ -62,8 +68,8 @@ describe('VoltageDividerCalculatorPage', () => {
     const user = userEvent.setup({ writeToClipboard: false, advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await user.type(screen.getByLabelText('R1 (Ω)'), '8.2k');
-    await user.type(screen.getByLabelText('R2 (Ω)'), '3.3k');
+    await runWithAct(() => user.type(screen.getByLabelText('R1 (Ω)'), '8.2k'));
+    await runWithAct(() => user.type(screen.getByLabelText('R2 (Ω)'), '3.3k'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
@@ -76,10 +82,10 @@ describe('VoltageDividerCalculatorPage', () => {
     const user = userEvent.setup({ writeToClipboard: false, advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await user.clear(screen.getByLabelText('Volt_high (V)'));
-    await user.type(screen.getByLabelText('Volt_high (V)'), '5');
-    await user.type(screen.getByLabelText('R1 (Ω)'), '10k');
-    await user.type(screen.getByLabelText('Volt_out (V)'), '3.3');
+    await runWithAct(() => user.clear(screen.getByLabelText('Volt_high (V)')));
+    await runWithAct(() => user.type(screen.getByLabelText('Volt_high (V)'), '5'));
+    await runWithAct(() => user.type(screen.getByLabelText('R1 (Ω)'), '10k'));
+    await runWithAct(() => user.type(screen.getByLabelText('Volt_out (V)'), '3.3'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
@@ -99,7 +105,7 @@ describe('VoltageDividerCalculatorPage', () => {
     expect(screen.getByDisplayValue('5')).toBeInTheDocument();
     expect(screen.getByDisplayValue('20k')).toBeInTheDocument();
 
-    await user.type(screen.getByLabelText('Volt_out (V)'), '3.3');
+    await runWithAct(() => user.type(screen.getByLabelText('Volt_out (V)'), '3.3'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
@@ -117,8 +123,8 @@ describe('VoltageDividerCalculatorPage', () => {
     const user = userEvent.setup({ writeToClipboard: false, advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await user.type(screen.getByLabelText('R1 (Ω)'), '10k');
-    await user.type(screen.getByLabelText('R2 (Ω)'), '15k');
+    await runWithAct(() => user.type(screen.getByLabelText('R1 (Ω)'), '10k'));
+    await runWithAct(() => user.type(screen.getByLabelText('R2 (Ω)'), '15k'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
@@ -126,7 +132,7 @@ describe('VoltageDividerCalculatorPage', () => {
 
     await waitFor(() => expect(screen.getByRole('button', { name: 'Copy All' })).toBeEnabled());
 
-    await user.click(screen.getByRole('button', { name: 'Copy All' }));
+    await runWithAct(() => user.click(screen.getByRole('button', { name: 'Copy All' })));
     expect(clipboardSpy).toHaveBeenCalledWith(expect.stringContaining('Volt_high: 11.5 V'));
     clipboardSpy.mockRestore();
   });

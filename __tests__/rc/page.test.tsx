@@ -26,6 +26,12 @@ const createSearchParams = (values: Record<string, string> = {}) => {
   } as unknown as URLSearchParams;
 };
 
+const runWithAct = async (operation: () => Promise<void>) => {
+  await act(async () => {
+    await operation();
+  });
+};
+
 describe('RcFilterCalculatorPage', () => {
   const routerReplace = jest.fn();
 
@@ -56,8 +62,8 @@ describe('RcFilterCalculatorPage', () => {
     const user = userEvent.setup({ writeToClipboard: false, advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await user.type(screen.getByLabelText('Resistance (R)'), '10k');
-    await user.type(screen.getByLabelText('Capacitance (C)'), '47n');
+    await runWithAct(() => user.type(screen.getByLabelText('Resistance (R)'), '10k'));
+    await runWithAct(() => user.type(screen.getByLabelText('Capacitance (C)'), '47n'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
@@ -72,8 +78,8 @@ describe('RcFilterCalculatorPage', () => {
     const user = userEvent.setup({ writeToClipboard: false, advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await user.type(screen.getByLabelText('Resistance (R)'), '10k');
-    await user.type(screen.getByLabelText('Capacitance (C)'), '47n');
+    await runWithAct(() => user.type(screen.getByLabelText('Resistance (R)'), '10k'));
+    await runWithAct(() => user.type(screen.getByLabelText('Capacitance (C)'), '47n'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
@@ -81,7 +87,7 @@ describe('RcFilterCalculatorPage', () => {
 
     await waitFor(() => expect(screen.getByText('338.63Hz')).toBeInTheDocument());
 
-    await user.click(screen.getByRole('button', { name: 'High-pass' }));
+    await runWithAct(() => user.click(screen.getByRole('button', { name: 'High-pass' })));
     await waitFor(() => expect(screen.getByText('338.63Hz')).toBeInTheDocument());
   });
 
@@ -93,7 +99,7 @@ describe('RcFilterCalculatorPage', () => {
     expect(screen.getByDisplayValue('12k')).toBeInTheDocument();
     expect(screen.getByDisplayValue('10n')).toBeInTheDocument();
 
-    await user.type(screen.getByLabelText('Cutoff Frequency (f_c)'), '1k');
+    await runWithAct(() => user.type(screen.getByLabelText('Cutoff Frequency (f_c)'), '1k'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
@@ -112,8 +118,8 @@ describe('RcFilterCalculatorPage', () => {
     const user = userEvent.setup({ writeToClipboard: false, advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await user.type(screen.getByLabelText('Capacitance (C)'), '47n');
-    await user.type(screen.getByLabelText('Cutoff Frequency (f_c)'), '1k');
+    await runWithAct(() => user.type(screen.getByLabelText('Capacitance (C)'), '47n'));
+    await runWithAct(() => user.type(screen.getByLabelText('Cutoff Frequency (f_c)'), '1k'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
@@ -121,7 +127,7 @@ describe('RcFilterCalculatorPage', () => {
 
     await waitFor(() => expect(screen.getByText(/Nearest E24/)).toBeInTheDocument());
 
-    await user.click(screen.getByRole('button', { name: /Above/ }));
+    await runWithAct(() => user.click(screen.getByRole('button', { name: /Above/ })));
     expect(clipboardSpy).toHaveBeenCalledWith(expect.stringContaining('kΩ'));
     clipboardSpy.mockRestore();
   });

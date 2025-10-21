@@ -33,6 +33,12 @@ const createSearchParams = (values: Record<string, string> = {}) => {
   } as unknown as URLSearchParams;
 };
 
+const runWithAct = async (operation: () => Promise<void>) => {
+  await act(async () => {
+    await operation();
+  });
+};
+
 describe('Sallen-Key Low-pass page', () => {
   const routerReplace = jest.fn();
 
@@ -63,8 +69,8 @@ describe('Sallen-Key Low-pass page', () => {
     const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await user.type(screen.getByLabelText('Cutoff Frequency (f_c)'), '1k');
-    await user.type(screen.getByLabelText('Quality Factor (Q)'), '0.707');
+    await runWithAct(() => user.type(screen.getByLabelText('Cutoff Frequency (f_c)'), '1k'));
+    await runWithAct(() => user.type(screen.getByLabelText('Quality Factor (Q)'), '0.707'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
@@ -91,7 +97,7 @@ describe('Sallen-Key Low-pass page', () => {
     expect(screen.getByDisplayValue('0.5')).toBeInTheDocument();
     expect(screen.getByLabelText('C1:C2 Ratio')).toBeInTheDocument();
 
-    await user.type(screen.getByLabelText('Capacitor Seed (C_base)'), '1n');
+    await runWithAct(() => user.type(screen.getByLabelText('Capacitor Seed (C_base)'), '1n'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);

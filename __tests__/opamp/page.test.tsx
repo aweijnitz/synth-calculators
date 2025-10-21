@@ -26,6 +26,12 @@ const createSearchParams = (values: Record<string, string> = {}) => {
   } as unknown as URLSearchParams;
 };
 
+const runWithAct = async (operation: () => Promise<void>) => {
+  await act(async () => {
+    await operation();
+  });
+};
+
 describe('OpAmpGainPage', () => {
   const routerReplace = jest.fn();
 
@@ -56,8 +62,8 @@ describe('OpAmpGainPage', () => {
     const user = userEvent.setup({ writeToClipboard: false, advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await user.type(screen.getByLabelText('Rin'), '10k');
-    await user.type(screen.getByLabelText('Rf'), '47k');
+    await runWithAct(() => user.type(screen.getByLabelText('Rin'), '10k'));
+    await runWithAct(() => user.type(screen.getByLabelText('Rf'), '47k'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
@@ -72,14 +78,14 @@ describe('OpAmpGainPage', () => {
     const user = userEvent.setup({ writeToClipboard: false, advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await user.type(screen.getByLabelText('Rin'), '10k');
-    await user.type(screen.getByLabelText('Rf'), '47k');
+    await runWithAct(() => user.type(screen.getByLabelText('Rin'), '10k'));
+    await runWithAct(() => user.type(screen.getByLabelText('Rf'), '47k'));
     await act(async () => {
       jest.advanceTimersByTime(300);
     });
     await waitFor(() => expect(screen.getByText(/-4\.7/)).toBeInTheDocument());
 
-    await user.click(screen.getByRole('button', { name: 'Non-inverting' }));
+    await runWithAct(() => user.click(screen.getByRole('button', { name: 'Non-inverting' })));
     await waitFor(() => expect(screen.getByText(/5\.7/)).toBeInTheDocument());
   });
 
@@ -93,7 +99,7 @@ describe('OpAmpGainPage', () => {
     expect(screen.getByDisplayValue('10k')).toBeInTheDocument();
     expect(screen.getByDisplayValue('3')).toBeInTheDocument();
 
-    await user.type(screen.getByLabelText('Rf'), '22k');
+    await runWithAct(() => user.type(screen.getByLabelText('Rf'), '22k'));
     await act(async () => {
       jest.advanceTimersByTime(300);
     });
@@ -110,15 +116,15 @@ describe('OpAmpGainPage', () => {
     const user = userEvent.setup({ writeToClipboard: false, advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await user.type(screen.getByLabelText('Gain (V/V)'), '-2');
-    await user.type(screen.getByLabelText('Rin'), '12k');
+    await runWithAct(() => user.type(screen.getByLabelText('Gain (V/V)'), '-2'));
+    await runWithAct(() => user.type(screen.getByLabelText('Rin'), '12k'));
     await act(async () => {
       jest.advanceTimersByTime(300);
     });
 
     await waitFor(() => expect(screen.getByText(/Nearest E24/)).toBeInTheDocument());
 
-    await user.click(screen.getByRole('button', { name: /Above/ }));
+    await runWithAct(() => user.click(screen.getByRole('button', { name: /Above/ })));
     expect(clipboardSpy).toHaveBeenCalledWith(expect.stringContaining('kΩ'));
     clipboardSpy.mockRestore();
   });
