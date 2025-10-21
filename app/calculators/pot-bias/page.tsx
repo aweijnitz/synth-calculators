@@ -21,8 +21,8 @@ const MAX_RECOMMENDED_RESISTANCE = 100_000_000;
 const DEFAULT_INPUTS: PotBiasInputs = {
   vsHi: '12',
   vsLo: '0',
-  vTop: '10',
-  vBot: '3',
+  vTop: '8',
+  vBot: '2',
   rPot: '10k'
 };
 
