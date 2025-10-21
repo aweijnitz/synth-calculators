@@ -47,6 +47,15 @@ export default function HomePage() {
           </Button>
           <Button
             component={Link}
+            href="/calculators/sallen-key-lp-equal-r"
+            variant="outlined"
+            size="large"
+            sx={{ flex: 1 }}
+          >
+            Sallen-Key LP (Dual Pot)
+          </Button>
+          <Button
+            component={Link}
             href="/calculators/voltage-divider"
             variant="outlined"
             size="large"
