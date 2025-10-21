@@ -117,8 +117,8 @@ function SallenKeyLowpassContent() {
   const ratioList = React.useMemo(() => ratioOptions(), []);
 
   const [inputs, setInputs] = React.useState<SallenKeyInputs>(() => ({
-    fc: searchParams.get('fc') ?? '',
-    q: searchParams.get('q') ?? '',
+    fc: searchParams.get('fc') ?? '440',
+    q: searchParams.get('q') ?? '0.7',
     cBase: searchParams.get('cbase') ?? '',
     ratio: searchParams.get('ratio') ?? 'auto',
   }));

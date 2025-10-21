@@ -129,8 +129,8 @@ function SallenKeyEqualPotContent() {
   const { mode: colorSchemeMode, setMode: setColorSchemeMode } = useColorScheme();
 
   const [inputs, setInputs] = React.useState<Inputs>(() => ({
-    fTarget50: searchParams.get('f50') ?? '',
-    rPotMax: searchParams.get('rpot') ?? '',
+    fTarget50: searchParams.get('f50') ?? '880',
+    rPotMax: searchParams.get('rpot') ?? '10k',
     cBase: searchParams.get('cbase') ?? '',
   }));
 

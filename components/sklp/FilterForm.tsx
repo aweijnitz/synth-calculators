@@ -116,9 +116,6 @@ export default function FilterForm({
             <Typography variant="h5" component="h2">
               Sallen-Key Low-pass (Unity Gain)
             </Typography>
-            <ToggleButtonGroup color="primary" exclusive value="lowpass" size="small" aria-label="Sallen-Key mode">
-              <ToggleButton value="lowpass">Low-pass (SK)</ToggleButton>
-            </ToggleButtonGroup>
           </Stack>
 
           <Stack spacing={2}>
