@@ -1,4 +1,4 @@
-import { Card, CardContent, Chip, Divider, Skeleton, Stack, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia, Chip, Divider, Skeleton, Stack, Typography } from '@mui/material';
 import * as React from 'react';
 import { formatFarads, formatHertz, formatOhms } from '../../lib/rc/parse';
 import {
@@ -54,6 +54,19 @@ export default function ResultsCard({ loading = false, result, fTarget50, rPotMa
   if (loading) {
     return (
       <Card variant="outlined">
+        <CardMedia
+          component="img"
+          image="/img/sallen-key-dual-gang.svg"
+          alt="Sallen-Key dual-gang potentiometer schematic"
+          sx={{
+            maxHeight: 220,
+            width: '100%',
+            objectFit: 'contain',
+            backgroundColor: 'background.default',
+            borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
+            p: 2,
+          }}
+        />
         <CardContent>
           <Stack spacing={2}>
             <Stack direction="row" justifyContent="space-between" alignItems="center">
@@ -72,6 +85,19 @@ export default function ResultsCard({ loading = false, result, fTarget50, rPotMa
   if (!result) {
     return (
       <Card variant="outlined">
+        <CardMedia
+          component="img"
+          image="/img/sallen-key-dual-gang.svg"
+          alt="Sallen-Key dual-gang potentiometer schematic"
+          sx={{
+            maxHeight: 220,
+            width: '100%',
+            objectFit: 'contain',
+            backgroundColor: 'background.default',
+            borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
+            p: 2,
+          }}
+        />
         <CardContent>
           <Stack spacing={2}>
             <Stack direction="row" justifyContent="space-between" alignItems="center">
@@ -99,6 +125,19 @@ export default function ResultsCard({ loading = false, result, fTarget50, rPotMa
 
   return (
     <Card variant="outlined">
+      <CardMedia
+        component="img"
+        image="/img/sallen-key-dual-gang.svg"
+        alt="Sallen-Key dual-gang potentiometer schematic"
+        sx={{
+          maxHeight: 220,
+          width: '100%',
+          objectFit: 'contain',
+          backgroundColor: 'background.default',
+          borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
+          p: 2,
+        }}
+      />
       <CardContent>
         <Stack spacing={2}>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
