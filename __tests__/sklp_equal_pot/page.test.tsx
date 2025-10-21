@@ -69,8 +69,13 @@ describe('Sallen-Key equal pot page', () => {
     const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await runWithAct(() => user.type(screen.getByLabelText('Target f₀ @ 50%'), '1k'));
-    await runWithAct(() => user.type(screen.getByLabelText('Dual-gang Pot Value'), '50k'));
+    const targetField = screen.getByLabelText('Target f₀ @ 50%');
+    await runWithAct(() => user.clear(targetField));
+    await runWithAct(() => user.type(targetField, '1k'));
+
+    const potField = screen.getByLabelText('Dual-gang Pot Value');
+    await runWithAct(() => user.clear(potField));
+    await runWithAct(() => user.type(potField, '50k'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);

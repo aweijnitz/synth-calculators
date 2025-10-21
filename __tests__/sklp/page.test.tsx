@@ -69,8 +69,13 @@ describe('Sallen-Key Low-pass page', () => {
     const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
     renderWithProviders();
 
-    await runWithAct(() => user.type(screen.getByLabelText('Cutoff Frequency (f_c)'), '1k'));
-    await runWithAct(() => user.type(screen.getByLabelText('Quality Factor (Q)'), '0.707'));
+    const fcField = screen.getByLabelText('Cutoff Frequency (f_c)');
+    await runWithAct(() => user.clear(fcField));
+    await runWithAct(() => user.type(fcField, '1k'));
+
+    const qField = screen.getByLabelText('Quality Factor (Q)');
+    await runWithAct(() => user.clear(qField));
+    await runWithAct(() => user.type(qField, '0.707'));
 
     await act(async () => {
       jest.advanceTimersByTime(300);
