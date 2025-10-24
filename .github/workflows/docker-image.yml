@@ -22,7 +22,7 @@ jobs:
       REGISTRY: docker.io
       # Use the project name you store in DOCKERHUB_PROJECT_NAME (e.g. "aweijnitz/synth-calculators").
       # Ensure this secret exists in the deploy environment.
-      IMAGE_NAME: ${{ secrets.DOCKERHUB_PROJECT_NAME }}
+      IMAGE_NAME: aweijnitz/synth-calculators
 
     permissions:
       contents: read
