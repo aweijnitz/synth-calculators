@@ -10,3 +10,5 @@ Dockerfile
 *.swo
 out
 .vercel
+buildImage.sh
+runDocker.sh

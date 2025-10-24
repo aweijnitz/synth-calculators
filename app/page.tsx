@@ -20,6 +20,24 @@ export default function HomePage() {
         <Stack direction={{ xs: 'column', sm: 'column' }} spacing={2} alignItems="stretch">
           <Button
             component={Link}
+            href="/calculators/parallel-resistors"
+            variant="outlined"
+            size="medium"
+            sx={{ flex: 1 }}
+          >
+            Parallel Resistors Calculator
+          </Button>
+          <Button
+            component={Link}
+            href="/calculators/voltage-divider"
+            variant="outlined"
+            size="medium"
+            sx={{ flex: 1 }}
+          >
+            Voltage Divider Calculator
+          </Button>
+          <Button
+            component={Link}
             href="/calculators/opamp-gain"
             variant="outlined"
             size="medium"
@@ -53,15 +71,6 @@ export default function HomePage() {
             sx={{ flex: 1 }}
           >
             Sallen-Key LP (Dual Gang Pot)
-          </Button>
-          <Button
-            component={Link}
-            href="/calculators/voltage-divider"
-            variant="outlined"
-            size="medium"
-            sx={{ flex: 1 }}
-          >
-            Voltage Divider Calculator
           </Button>
           <Button
             component={Link}
