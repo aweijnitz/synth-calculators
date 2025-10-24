@@ -7,13 +7,13 @@ export default function HomePage() {
       <Stack spacing={{ xs: 6, sm: 8 }} alignItems="stretch">
         <Box textAlign={{ xs: 'left', sm: 'center' }}>
           <Typography variant="overline" color="secondary" sx={{ letterSpacing: 2 }}>
-            DIY Synth Tools
+            Synth Tools
           </Typography>
           <Typography variant="h1" component="h1" gutterBottom>
             Synth Calculators
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            Quick access to synthesizer tools and resources.
+            Common calculators for DIY synth.
           </Typography>
         </Box>
 
