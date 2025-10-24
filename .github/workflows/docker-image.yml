@@ -23,6 +23,10 @@ jobs:
       # Use the project name you store in DOCKERHUB_PROJECT_NAME (e.g. "aweijnitz/synth-calculators").
       # Ensure this secret exists in the deploy environment.
       IMAGE_NAME: aweijnitz/synth-calculators
+      # Container name on the host
+      CONTAINER_NAME: synth-calculators
+      # Host port to expose the application on
+      HOST_PORT: 3010
 
     permissions:
       contents: read
@@ -64,3 +68,30 @@ jobs:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
+      - name: Deploy updated container
+        run: |
+          set -euo pipefail
+          IMAGE_REF="${REGISTRY}/${IMAGE_NAME}@${{ steps.push.outputs.digest }}"
+
+          echo "Pulling ${IMAGE_REF}"
+          docker pull "${IMAGE_REF}"
+
+          RUNNING=$(docker ps -q --filter "name=^${CONTAINER_NAME}$")
+          if [ -n "${RUNNING}" ]; then
+            echo "Stopping running container ${CONTAINER_NAME}"
+            docker stop "${CONTAINER_NAME}"
+          fi
+
+          EXISTING=$(docker ps -aq --filter "name=^${CONTAINER_NAME}$")
+          if [ -n "${EXISTING}" ]; then
+            echo "Removing existing container ${CONTAINER_NAME}"
+            docker rm "${CONTAINER_NAME}"
+          fi
+
+          echo "Starting container ${CONTAINER_NAME} from ${IMAGE_REF}"
+          docker run -d \
+            --name "${CONTAINER_NAME}" \
+            --restart unless-stopped \
+            -p "127.0.0.1:${HOST_PORT}:3010" \
+            "${IMAGE_REF}"
