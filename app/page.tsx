@@ -20,6 +20,15 @@ export default function HomePage() {
         <Stack direction={{ xs: 'column', sm: 'column' }} spacing={2} alignItems="stretch">
           <Button
             component={Link}
+            href="/calculators/parallel-resistors"
+            variant="outlined"
+            size="medium"
+            sx={{ flex: 1 }}
+          >
+            Parallel Resistors Calculator
+          </Button>
+          <Button
+            component={Link}
             href="/calculators/opamp-gain"
             variant="outlined"
             size="medium"
