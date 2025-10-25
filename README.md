@@ -9,6 +9,10 @@ Availale at [Synthi-Calc](https://synthi-calc.expressive-circuits.com/)
 - Material UI 5 provides theming, layout primitives, and responsive design tokens.
 - TypeScript-first codebase with Jest for unit and component testing.
 
+![](doc/img/synthi-calc-home.png | width=128)
+![](doc/img/synthi-calc-gain.png | width=128)
+![](doc/img/synthi-calc-lp-stereo-pot.png | width=128)
+
 ## Getting Started
 ```bash
 npm install
