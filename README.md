@@ -2,6 +2,8 @@
 
 Synthesizer calculators with a Material Design 3 interface. Mobile-first Next.js SPA webapp.
 
+Availale at [Synthi-Calc](https://synthi-calc.expressive-circuits.com/)
+
 ## Overview
 - Built with Next.js 14 App Router and React 18.
 - Material UI 5 provides theming, layout primitives, and responsive design tokens.
