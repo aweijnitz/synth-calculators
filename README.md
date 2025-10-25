@@ -9,9 +9,27 @@ Availale at [Synthi-Calc](https://synthi-calc.expressive-circuits.com/)
 - Material UI 5 provides theming, layout primitives, and responsive design tokens.
 - TypeScript-first codebase with Jest for unit and component testing.
 
-![](doc/img/synthi-calc-home.png | width=128)
-![](doc/img/synthi-calc-gain.png | width=128)
-![](doc/img/synthi-calc-lp-stereo-pot.png | width=128)
+<picture>
+  <source
+    srcset="doc/img/synthi-calc-home.png"
+    media="(orientation: landscape)" />
+  <img src="doc/img/synthi-calc-home.png" alt="start page" width="480" />
+</picture>
+
+<picture>
+  <source
+    srcset="doc/img/synthi-calc-gain.png"
+    media="(orientation: landscape)" />
+  <img src="doc/img/synthi-calc-gain.png" alt="op amp gain calculator" width="480" />
+</picture>
+
+<picture>
+  <source
+    srcset="doc/img/synthi-calc-lp-stereo-pot.png"
+    media="(orientation: landscape)" />
+  <img src="doc/img/synthi-calc-lp-stereo-pot.png" alt="sallen key dual gang pot calculator" width="480" />
+</picture>
+
 
 ## Getting Started
 ```bash
