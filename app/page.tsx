@@ -20,6 +20,15 @@ export default function HomePage() {
         <Stack direction={{ xs: 'column', sm: 'column' }} spacing={2} alignItems="stretch">
           <Button
             component={Link}
+            href="/calculators/capacitor-converter"
+            variant="outlined"
+            size="medium"
+            sx={{ flex: 1 }}
+          >
+            Capacitor Suffix Converter
+          </Button>
+          <Button
+            component={Link}
             href="/calculators/parallel-resistors"
             variant="outlined"
             size="medium"
