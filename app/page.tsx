@@ -81,6 +81,15 @@ export default function HomePage() {
           >
             Pot Bias Calculator
           </Button>
+                    <Button
+            component={Link}
+            href="/calculators/capacitor-converter"
+            variant="outlined"
+            size="medium"
+            sx={{ flex: 1 }}
+          >
+            Capacitor Suffix Converter
+          </Button>
         </Stack>
         <Divider flexItem />
       </Stack>
