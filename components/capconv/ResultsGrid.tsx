@@ -149,20 +149,12 @@ function formatSigned(value: number): string {
   if (!Number.isFinite(value)) {
     return '--';
   }
-  if (value === 0) {
-    return '±0';
+  const rounded = Math.round(value);
+  if (rounded === 0) {
+    return '0';
   }
-  const abs = Math.abs(value);
-  const exponent = Math.floor(Math.log10(abs));
-  const decimals = Math.max(0, 3 - exponent - 1);
-  let formatted = abs.toFixed(decimals);
-  if (decimals > 0 && formatted.includes('.')) {
-    formatted = formatted.replace(/0+$/, '');
-    if (formatted.endsWith('.')) {
-      formatted = `${formatted}0`;
-    }
-  }
-  return `${value > 0 ? '+' : '-'}${formatted}`;
+  const absRounded = Math.abs(rounded);
+  return `${rounded > 0 ? '+' : '-'}${absRounded}`;
 }
 
 function formatPercent(value: number): string {
