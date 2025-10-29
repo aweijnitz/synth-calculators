@@ -281,7 +281,7 @@ function DiodeSeriesContent() {
 
   return (
     <>
-      <CalculatorHeader title="Diode Current & Resistor" />
+      <CalculatorHeader title="Diode Current & Resistor Calculator" />
       <Container component="main" maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
         <Stack spacing={4}>
           <Stack direction="row" justifyContent="space-between" alignItems="center">

@@ -1,7 +1,7 @@
 'use client';
 
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { Alert, Button, Card, CardContent, Snackbar, Stack, Typography } from '@mui/material';
+import { Alert, Button, Card, CardContent, CardMedia, Snackbar, Stack, Typography } from '@mui/material';
 import * as React from 'react';
 import CopyChip from '../common/CopyChip';
 import { formatMilliAmps, formatOhms, formatVolts } from '../../lib/diode/parse';
@@ -131,6 +131,19 @@ export default function ResultsCard({
 
   return (
     <Card variant="outlined" sx={{ height: '100%' }}>
+      <CardMedia
+        component="img"
+        image="/img/LED-current.svg"
+        alt="LED current flow diagram"
+        sx={{
+          maxHeight: 220,
+          width: '100%',
+          objectFit: 'contain',
+          backgroundColor: 'background.default',
+          borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
+          p: 2,
+        }}
+      />
       <CardContent>
         <Stack spacing={3}>
           <Typography variant="h5" component="h2">
