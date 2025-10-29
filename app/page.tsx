@@ -90,6 +90,15 @@ export default function HomePage() {
           >
             Capacitor Suffix Converter
           </Button>
+                    <Button
+            component={Link}
+            href="/calculators/diode-series"
+            variant="outlined"
+            size="medium"
+            sx={{ flex: 1 }}
+          >
+            Diode Current & Resistor
+          </Button>
         </Stack>
         <Divider flexItem />
       </Stack>
